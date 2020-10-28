@@ -20,6 +20,6 @@ public class MobileBankApiTestV3 {
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("data", equalTo("some data"));
+                .body("data", equalTo("some thing"));
     }
 }
