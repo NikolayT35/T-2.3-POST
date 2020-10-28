@@ -3,19 +3,21 @@ package rest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 class MobileBankApiTestV1 {
     @Test
-    void shouldReturnDemoAccounts() {
-        // Given - When - Then
-        // Предусловия
+    void shouldPost() {
+
         given()
-                .baseUri("http://localhost:9999/api/v1")
-                // Выполняемые действия
+                .baseUri("https://postman-echo.com")
+                .body("some data")
+
                 .when()
-                .get("/demo/accounts")
-                // Проверки
+                .post("/post")
+
                 .then()
-                .statusCode(200);
+                .statusCode(200)
+                .body(matchesJsonSchemaInClasspath("accounts.schema.json"));
     }
 }

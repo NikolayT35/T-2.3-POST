@@ -7,16 +7,18 @@ import static io.restassured.RestAssured.given;
 
 public class MobileBankApiTestV2 {
     @Test
-    void shouldReturnDemoAccounts() {
+    void shouldPost() {
 
         given()
-                .baseUri("http://localhost:9999/api/v1")
+                .baseUri("https://postman-echo.com")
+                .body("some data")
+
                 .when()
-                .get("/demo/accounts")
+                .post("/post")
+
                 .then()
                 .statusCode(200)
-                .header("Content-Type", "application/json; charset=UTF-8")
-                // специализированные проверки - лучше
+                .header("Content-Type", "application/json; charset=utf-8")
                 .contentType(ContentType.JSON);
     }
 }
